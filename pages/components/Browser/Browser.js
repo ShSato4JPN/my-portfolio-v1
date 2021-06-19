@@ -10,8 +10,11 @@
 
  export default function Browser (props) {
    return (
-     <div className={layout.browser}>
-       <TitleBar title={props.title}/>
+     <div className={ layout.browser }>
+       <TitleBar title= {props.title } />
+       <div className={ layout.browser_body }>
+         {props.children}
+       </div>
      </div>
    )
  }

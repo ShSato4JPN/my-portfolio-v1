@@ -1,0 +1,11 @@
+.browser {
+    width: 60%;
+    height: 70vh;
+    background-color: whitesmoke;
+    border-radius: 20px ;
+}
+
+.browser_body {
+    background-color: orange;
+    margin: 1rem;
+}
