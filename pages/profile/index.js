@@ -4,11 +4,9 @@
  */
  import layout from './Profile.module.css'
  import Browser from '../components/Browser/Browser'
- import Image from 'next/image'
+ import ProfileItem from '../components/ProfileItem/ProfileItem'
 
- import React from 'react';
- import { makeStyles } from '@material-ui/core/styles';
- import Paper from '@material-ui/core/Paper';
+ import Image from 'next/image'
  import Grid from '@material-ui/core/Grid';
  
 export default function Profile () {
@@ -25,18 +23,26 @@ export default function Profile () {
             />
           </div>
           <div className={`${layout.profile_top_right} ${layout.profile_top_elem}`}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               <Grid item xs={12}>
-                test
+                <div>
+                  <ProfileItem title="NAME" data="S.Hokazono" />
+                </div>
               </Grid>
               <Grid item xs={6}>
-                test1
+                <div>
+                  <ProfileItem title="AGE" data="26" />
+                </div>
               </Grid>
               <Grid item xs={6}>
-                test2
+                <div>
+                  <ProfileItem title="BLOOD" data="AB" />
+                </div>
               </Grid>
               <Grid item xs={12}>
-                test3
+                <div>
+                  <ProfileItem title="INTEREST" data="バイク、ゲーム、ネットサーフィン、" />
+                </div>
               </Grid>
             </Grid>
           </div>

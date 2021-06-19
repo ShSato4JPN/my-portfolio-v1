@@ -1,6 +1,9 @@
 .browser {
-    width: 60%;
-    height: 70vh;
+    width: 80%;
+    min-width: 960px;
+    height: 60%;
+    min-height: 600px;
+    margin: 60px auto;
     background-color: whitesmoke;
     border-radius: 20px ;
 }

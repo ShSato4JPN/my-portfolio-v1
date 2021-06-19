@@ -1,0 +1,20 @@
+.profileitem {
+    background-color: mintcream;
+}
+
+.profileItem_header {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+.profileItem_header_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    float: left;
+}
+
+.profileItem_body {
+    font-size: 1.8rem;
+    text-align: center;
+}

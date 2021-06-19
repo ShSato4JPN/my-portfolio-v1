@@ -1,7 +1,6 @@
 import layout from './Profile.module.css'
 import Browser from '../components/Browser/Browser'
 import Image from 'next/image'
-import { Button } from '@material-ui/core'
 
 /**
  * Profile ページを呼び出します。
