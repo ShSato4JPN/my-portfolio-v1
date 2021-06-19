@@ -1,0 +1,32 @@
+.titlebar {
+    background-color: #89c4ff;
+    text-align: center;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px ;
+}
+
+.titlebar_elem {
+    display: inline-block;
+}
+
+.titlebar_title {
+    color: #222222;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.titlebar_closebtn {
+    width: 4%;
+    font-size: 1.4rem;
+    float: right;
+    position: relative;
+    margin-top: 0.2vw;
+    margin-right: 0.5vw;
+    border-radius: 30px;
+
+    transition-duration: 0.15s;
+}
+
+.titlebar_closebtn:hover {
+    background-color: tomato;
+}

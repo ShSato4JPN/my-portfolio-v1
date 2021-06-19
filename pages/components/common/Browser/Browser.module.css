@@ -1,0 +1,7 @@
+.browser {
+    width: 95vw;
+    height: 80vh;
+    margin: 2.5vw 2vh 2.5vh  2.5vw;
+    background-color: grey;
+    border-radius: 20px ;
+}
