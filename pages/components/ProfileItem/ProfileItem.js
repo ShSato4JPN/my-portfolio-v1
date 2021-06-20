@@ -1,21 +1,20 @@
 import layout from './ProfileItem.module.css'
+import React from 'react'
 
 export default function ProfileItem ( props ) {
-  // const datas = props.data.split(',')
-  // let elm = <ul>
-  // datas.map( (item) => {
-  //   elm = 
-  // })
+  const datas = props.data.split('\\n').map( (d, idx) => {
+    return (
+      <React.Fragment key={idx}>{d}<br /></React.Fragment>
+    )
+  })
 
   return (
     <div className={layout.profileitem}>
-      <div className={layout.profileItem_header}>
-        <div className={layout.profileItem_header_title}>
-          {props.title}
-        </div>
+      <div className={layout.profileItem_title}>
+        {props.title}
       </div>
       <div className={layout.profileItem_body}>
-        {props.data}
+        {datas}
       </div>
     </div>
   )

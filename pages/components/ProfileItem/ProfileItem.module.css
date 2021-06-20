@@ -1,26 +1,20 @@
 .profileitem {
-    background-color: mintcream;
-    border-radius: 5px;
-    border: 2px solid #077fff;
-}
-
-.profileItem_header {
     display: flex;
-    flex-direction: row;
+    font-size: 1.1rem;
 }
 
-.profileItem_header_title {
+.profileItem_title {
+    width: 8rem;
     padding: 0.2rem;
-    color: mintcream;
-    background-color: #007fff;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    float: left;
+    background-color: lightgrey;
+    border-radius: 2px;
 }
 
 .profileItem_body {
-    font-size: 1.4rem;
+    width: 100%;
+    height: 3.5rem;
+    margin-left: 0.2rem;
     padding: 0.2rem;
-    text-align: center;
+    background-color: white;
+    border-radius: 2px;
 }
