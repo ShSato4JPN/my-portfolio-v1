@@ -1,6 +1,7 @@
 .browser {
     width: 80%;
-    min-width: 960px;
+    min-width: 800px;
+    max-width: 960px;
     height: 60%;
     min-height: 600px;
     margin: 60px auto;
@@ -9,6 +10,5 @@
 }
 
 .browser_body {
-    background-color: orange;
     margin: 1rem;
 }

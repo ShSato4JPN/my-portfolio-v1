@@ -1,20 +1,26 @@
 .profileitem {
     background-color: mintcream;
+    border-radius: 5px;
+    border: 2px solid #077fff;
 }
 
 .profileItem_header {
-    height: 20%;
     display: flex;
     flex-direction: row;
 }
 
 .profileItem_header_title {
-    font-size: 1.2rem;
+    padding: 0.2rem;
+    color: mintcream;
+    background-color: #007fff;
+    border-radius: 5px;
+    font-size: 1.1rem;
     font-weight: bold;
     float: left;
 }
 
 .profileItem_body {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    padding: 0.2rem;
     text-align: center;
 }

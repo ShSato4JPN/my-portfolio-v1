@@ -23,25 +23,30 @@ export default function Profile () {
             />
           </div>
           <div className={`${layout.profile_top_right} ${layout.profile_top_elem}`}>
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
               <Grid item xs={12}>
                 <div>
-                  <ProfileItem title="NAME" data="S.Hokazono" />
+                  <ProfileItem title="名前" data="S.Hokazono" />
                 </div>
               </Grid>
               <Grid item xs={6}>
                 <div>
-                  <ProfileItem title="AGE" data="26" />
+                  <ProfileItem title="生年月日" data="1994/12/21" />
                 </div>
               </Grid>
               <Grid item xs={6}>
                 <div>
-                  <ProfileItem title="BLOOD" data="AB" />
+                  <ProfileItem title="性別" data="男" />
+                </div>
+              </Grid>
+              <Grid item xs={6}>
+                <div>
+                  <ProfileItem title="住所" data="東京都 大田区" />
                 </div>
               </Grid>
               <Grid item xs={12}>
                 <div>
-                  <ProfileItem title="INTEREST" data="バイク、ゲーム、ネットサーフィン、" />
+                  <ProfileItem title="趣味" data="バイク、ゲーム、ネットサーフィン、" />
                 </div>
               </Grid>
             </Grid>

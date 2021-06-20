@@ -12,14 +12,15 @@
 .titlebar_title {
     color: mintcream;
     font-weight: bold;
+    margin: 0.2rem 0;
     font-size: 1.7rem;
 }
 
 .titlebar_closebtn {
-    width: 4%;
-    font-size: 1.4rem;
+    width: 2.5rem;
+    font-size: 1.6rem;
     float: right;
-    margin-top: 2px;
+    margin-top: 0.3rem;
     margin-right: 10px;
     border-radius: 10px;
 
