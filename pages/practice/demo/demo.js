@@ -29,6 +29,7 @@ export default function App () {
   const [modeA, setModeA] = useState(false)
   const [modeB, setModeB] = useState(false)
   const [modeC, setModeC] = useState(false)
+  const [none, setNone] = useState(false)
 
   const handleActionEvent = ( event ) => {
     console.log("action event")
@@ -45,27 +46,33 @@ export default function App () {
     console.log( event.key )
     console.log( event.target.value )
     
-    const inVal = event.target.value
-    switch (inVal) {
-      case 'compa':
-        setModeA(true)
-        setModeB(false)
-        setModeC(false)
-        break;
-      case 'compb':
-        setModeB(true) 
-        setModeA(false)
-        setModeC(false)
-        break;
-      case 'compc':
-        setModeC(true)
-        setModeA(false)
-        setModeB(false)
-        break;
-      default:
-        setModeA(false)
-        setModeB(false)
-        setModeC(false)
+    if ( event.key === 'Enter') {
+      const inVal = event.target.value
+      switch (inVal) {
+        case 'compa':
+          setModeA(true)
+          setModeB(false)
+          setModeC(false)
+          setNone(false)
+          break;
+        case 'compb':
+          setModeB(true) 
+          setModeA(false)
+          setModeC(false)
+          setNone(false)
+          break;
+        case 'compc':
+          setModeC(true)
+          setModeA(false)
+          setModeB(false)
+          setNone(false)
+          break;
+        default:
+          setNone(true)
+          setModeA(false)
+          setModeB(false)
+          setModeC(false)
+      }
     }
   }
 
@@ -74,6 +81,7 @@ export default function App () {
       {modeA ? <CompA /> : ''}
       {modeB ? <CompB /> : ''}
       {modeC ? <CompC /> : ''}
+      {none ? <h2>None Command</h2> : ''}
       <input type='text' onChange={handleChangeEvent} onKeyDown={handleKeyDownEvent} />
       <input type='button' value='Click' onClick={handleActionEvent} />
     </div>
