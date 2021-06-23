@@ -1,14 +1,51 @@
 .browser {
     width: 80%;
-    min-width: 800px;
-    max-width: 960px;
-    height: 60%;
-    min-height: 600px;
+    width: 960px;
+    height: 600px;
     margin: 60px auto;
     background-color: whitesmoke;
-    border-radius: 20px ;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.browser_body {
-    margin: 1rem;
+.titlebar {
+  height: 2rem;
+  border-radius: 20px 20px 0 0 ;
+  text-align: center;
+  display: flex;
+  position: relative;
+  padding: 0.2rem;
+  background-color: #007fff;
+}
+
+.title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: mintcream;
+}
+
+.closebtn {
+  width: 2.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  right: 1.5rem;
+  transition-duration: 0.15s;
+}
+
+.closebtn:hover {
+    background-color: tomato;
+}
+
+.body {
+  height: 100%;
+  background-color: smokewhite;
 }

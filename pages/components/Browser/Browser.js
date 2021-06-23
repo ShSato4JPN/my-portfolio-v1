@@ -5,16 +5,19 @@
  * @returns Browser
  */
 
- import TitleBar from '../TitleBar/TitleBar'
- import layout from './Browser.module.css'
+import styles from './Browser.module.css'
 
- export default function Browser (props) {
+ function Browser ( props ) {
    return (
-     <div className={ layout.browser }>
-       <TitleBar title= {props.title } />
-       <div className={ layout.browser_body }>
-         {props.children}
+     <div className={ styles.browser }>
+       <div className={ styles.titlebar}>
+         <div className={ styles.title}> { props.title } </div>
+         <div className={ styles.closebtn} onClick={ props.closeAction }> ✕ </div>
+       </div>
+       <div className={styles.body}>
        </div>
      </div>
    )
  }
+
+export default Browser
