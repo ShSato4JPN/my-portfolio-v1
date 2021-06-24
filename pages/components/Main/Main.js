@@ -1,4 +1,3 @@
-import { style } from '@material-ui/system'
 import { useState, useEffect } from 'react'
 import Profile from '../Browser/Browser'
 import styles from './Main.module.css'
@@ -56,14 +55,16 @@ function Main () {
 
   return (
     <div>
-      <div className={ styles.browsers } >
-        {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
-        {modeBlog ? <Profile title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
-        {modeInformation ? <Profile title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
+      <div className={styles.consoleform}>
+        <div className={ styles.browsers } >
+          {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
+          {modeBlog ? <Profile title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
+          {modeInformation ? <Profile title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
+        </div>
       </div>
-      <input type="text"
-             onKeyDown={handleKeyDown}       
-      />
+      <div className={styles.inputform}>
+        <input type="text" onKeyDown={handleKeyDown} />
+      </div>
     </div>
   )
 
