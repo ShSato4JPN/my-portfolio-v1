@@ -3,21 +3,18 @@ import Profile from '../Browser/Browser'
 import styles from './Main.module.css'
 
 function Main () {
-  
+
+  // フック
   const [modeProfile, setModeProfile] = useState(false)
   const [modeBlog, setModeBlog] = useState(false)
   const [modeInformation, setModeInformation] = useState(false)
-  const [cmdHistory, setCmdHistory] = useState([])
 
-  // Input Command Logs
-  let cmdLog = cmdHistory
-
-  // State Functions Wrappers
+  // 各画面を閉じるファンクション(フック関係)
   const closeProfile = () => { setModeProfile(false) }
   const closeBlog = () => { setModeBlog(false) }
   const closeInformation = () => { setModeInformation(false) }
-
-  // Key Event Handlers
+  
+  // イベントハンドラー
   const handleKeyDown = ( event ) => {
     let inCmd = event.target.value.toString()
     
@@ -27,22 +24,22 @@ function Main () {
           setModeProfile(true)
           setModeBlog(false)
           setModeInformation(false)
-          setCmdHistory('show profile is running...')
+          //addHistory('show profile is running...')
           break;
         case 'show blog':
           setModeProfile(false)
           setModeBlog(true)
           setModeInformation(false)
-          setCmdHistory('show blog is running...')
+          //addHistory('show blog is running...')
           break;
         case 'show info':
           setModeProfile(false)
           setModeBlog(false)
           setModeInformation(true)
-          setCmdHistory('show info is running...')
+          //addHistory('show info is running...')
           break;
         default:
-          setCmdHistory('No such command exists...')
+          //addHistory('No such command exists...')
           break;
       }
     }
@@ -51,9 +48,6 @@ function Main () {
   return (
     <div>
       <div className={styles.consoleform}>
-        {cmdLog.map ( (item, index) => (
-          <p index={index}>{item}</p>
-        ))}
       </div>
       <div className={ styles.browsers } >
           {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
