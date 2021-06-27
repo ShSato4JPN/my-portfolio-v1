@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Profile from '../Browser/Browser'
 import styles from './Main.module.css'
+import { getCurrentDate } from '../../../lib/common'
 
 const _maxLogs = 10
 
@@ -76,10 +77,16 @@ function Main () {
   return (
     <div>
       <div className={styles.consoleform}>
-        {cmdHistory.map( ( val, idx ) => (
-          <p key={idx}>{val}</p>
-        ))
-        }
+        <table>
+          <tbody>
+            {cmdHistory.map( ( val, idx ) => (
+              <tr>
+                <td>{getCurrentDate()}</td>
+                <td key={idx}> {val}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className={ styles.browsers } >
           {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
