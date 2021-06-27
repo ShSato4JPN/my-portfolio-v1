@@ -3,3 +3,9 @@
   height: 900px;
   position: relative;
 }
+
+.consoleform {
+  width: 80%;
+  height: 900px;
+  background-color: orange;
+}
