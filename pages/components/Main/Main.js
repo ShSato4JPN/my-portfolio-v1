@@ -3,7 +3,7 @@ import Profile from '../Browser/Browser'
 import styles from './Main.module.css'
 import { getCurrentDate } from '../../../lib/common'
 
-const _maxLogs = 10
+const _maxLogs = 100
 
 function Main () {
 
@@ -16,27 +16,31 @@ function Main () {
   // wrapper系ファンクション
   const closeProfile = () => { 
     setModeProfile(false)
-    addCmdHistory( 'Close the Profile...' )
+    addCmdHistory( 'close the profile...' )
   }
   
   const closeBlog = () => { 
     setModeBlog(false)
-    addCmdHistory( 'Close the Blog...' )
+    addCmdHistory( 'close the blog...' )
   }
   
   const closeInformation = () => { 
     setModeInformation(false)
-    addCmdHistory( 'Close the Information...' )
+    addCmdHistory( 'close the information...' )
   }
   
-  const addCmdHistory = ( cmd ) => {
+  const addCmdHistory = ( msg ) => {
     const logs = [...cmdHistory]
     if ( cmdHistory.length === _maxLogs ) {
       logs.splice( 0, 1 )
     }
-    logs.push( cmd )
+    logs.push( {time: getCurrentDate(), log: msg} )
     setCmdHistory( logs )
     //console.log( "history : " + cmdHistory )
+  }
+
+  const clearCmdHistory = () => {
+    setCmdHistory([])
   }
   
   // イベントハンドラー
@@ -48,26 +52,28 @@ function Main () {
           setModeProfile(true)
           setModeBlog(false)
           setModeInformation(false)
-          // コマンドログの出力
           addCmdHistory('show profile is running...')
           break;
         case 'show blog':
           setModeProfile(false)
           setModeBlog(true)
           setModeInformation(false)
-          // コマンドログの出力
           addCmdHistory('show blog is running...')
           break;
         case 'show info':
+        case 'show information':
           setModeProfile(false)
           setModeBlog(false)
           setModeInformation(true)
-          // コマンドログの出力
           addCmdHistory('show info is running...')
+          break;
+        case 'clear':
+        case 'cls':
+          clearCmdHistory()
           break;
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
-            addCmdHistory(`The command '${inCmd}' was not found...`)
+            addCmdHistory(`The command &!sapn-start!&'${inCmd}'&!sapn-end!& was not found...`)
           }
           break;
       }
@@ -76,25 +82,27 @@ function Main () {
 
   return (
     <div>
-      <div className={styles.consoleform}>
-        <table>
-          <tbody>
-            {cmdHistory.map( ( val, idx ) => (
-              <tr>
-                <td>{getCurrentDate()}</td>
-                <td key={idx}> {val}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className={ styles.browsers } >
+      <div className={ styles.main } >
+        <div className={styles.consoleform}>
+          <table>
+            <tbody>
+              {cmdHistory.map( ( val, idx ) => (
+                <tr>
+                  <td>{val['time']}</td>
+                  <td key={idx}>{val['log']}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className={styles.browser}>
           {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
           {modeBlog ? <Profile title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
           {modeInformation ? <Profile title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
-      </div>
-      <div className={styles.inputform}>
-        <input type="text" onKeyDown={handleKeyDown} />
+        </div>
+        <div className={styles.inputform}>
+          <input type="input" className={styles.inputcmd} onKeyDown={handleKeyDown} />
+        </div>
       </div>
     </div>
   )
