@@ -12,6 +12,10 @@ a {
   text-decoration: none;
 }
 
+span {
+  color: #ff0033
+}
+
 * {
   box-sizing: border-box;
 }

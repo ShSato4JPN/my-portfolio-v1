@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Profile from '../Browser/Browser'
+import LogItem from '../LogItem/LogItem'
 import styles from './Main.module.css'
 import { getCurrentDate } from '../../../lib/common'
 
@@ -34,9 +35,9 @@ function Main () {
     if ( cmdHistory.length === _maxLogs ) {
       logs.splice( 0, 1 )
     }
-    logs.push( {time: getCurrentDate(), log: msg} )
+    logs.push( {time: getCurrentDate(), message: msg} )
     setCmdHistory( logs )
-    //console.log( "history : " + cmdHistory )
+    console.log( "history : " + cmdHistory )
   }
 
   const clearCmdHistory = () => {
@@ -73,7 +74,7 @@ function Main () {
           break;
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
-            addCmdHistory(`The command &!sapn-start!&'${inCmd}'&!sapn-end!& was not found...`)
+            addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`)
           }
           break;
       }
@@ -87,10 +88,7 @@ function Main () {
           <table>
             <tbody>
               {cmdHistory.map( ( val, idx ) => (
-                <tr>
-                  <td>{val['time']}</td>
-                  <td key={idx}>{val['log']}</td>
-                </tr>
+                <LogItem time={val['time']} message={val['message']} key={idx} />
               ))}
             </tbody>
           </table>
