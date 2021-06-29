@@ -17,27 +17,27 @@ function Main () {
   // wrapper系ファンクション
   const closeProfile = () => { 
     setModeProfile(false)
-    addCmdHistory( 'close the profile...' )
+    addCmdHistory( 'close the profile...', 'OK' )
   }
   
   const closeBlog = () => { 
     setModeBlog(false)
-    addCmdHistory( 'close the blog...' )
+    addCmdHistory( 'close the blog...', 'OK' )
   }
   
   const closeInformation = () => { 
     setModeInformation(false)
-    addCmdHistory( 'close the information...' )
+    addCmdHistory( 'close the information...', 'OK' )
   }
   
-  const addCmdHistory = ( msg ) => {
+  const addCmdHistory = ( msg, type ) => {
     const logs = [...cmdHistory]
     if ( cmdHistory.length === _maxLogs ) {
       logs.splice( 0, 1 )
     }
-    logs.push( {time: getCurrentDate(), message: msg} )
+    logs.push( {time: getCurrentDate(), message: msg, type: type} )
     setCmdHistory( logs )
-    console.log( "history : " + cmdHistory )
+    console.log( "history : " + type )
   }
 
   const clearCmdHistory = () => {
@@ -53,20 +53,20 @@ function Main () {
           setModeProfile(true)
           setModeBlog(false)
           setModeInformation(false)
-          addCmdHistory('show profile is running...')
+          addCmdHistory( '&!span-start!&show profile&!span-end!& is running...', 'OK' )
           break;
         case 'show blog':
           setModeProfile(false)
           setModeBlog(true)
           setModeInformation(false)
-          addCmdHistory('show blog is running...')
+          addCmdHistory( '&!span-start!&show blog&!span-end!& is running...', 'OK' )
           break;
         case 'show info':
         case 'show information':
           setModeProfile(false)
           setModeBlog(false)
           setModeInformation(true)
-          addCmdHistory('show info is running...')
+          addCmdHistory( '&!span-start!&show info&!span-end!& is running...' , 'OK')
           break;
         case 'clear':
         case 'cls':
@@ -74,7 +74,7 @@ function Main () {
           break;
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
-            addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`)
+            addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`, 'ERROR')
           }
           break;
       }
@@ -88,7 +88,7 @@ function Main () {
           <table>
             <tbody>
               {cmdHistory.map( ( val, idx ) => (
-                <LogItem time={val['time']} message={val['message']} key={idx} />
+                <LogItem time={val['time']} message={val['message']} type={val['type']} key={idx} />
               ))}
             </tbody>
           </table>
