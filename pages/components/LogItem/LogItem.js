@@ -8,14 +8,18 @@ export default function LogItem ( props ) {
   const type = props.type
   
   return (
-    <tr>
-      <td>{time}</td>
-      {msg.length === 1 ? (
-        <td>{msg[0]}</td>
-        ) : (
-          <td>{msg[0]} <span className={type == 'OK' ? styles.ok : styles.error}>{msg[1]}</span> {msg[2]}</td>
-        )
-      }
+    <tr className={styles.log}>
+      <div className={styles.time}>
+        <td>{time}</td>
+      </div>
+      <div className={styles.message}>
+        {msg.length === 1 ? (
+          <td>{msg[0]}</td>
+          ) : (
+            <td>{msg[0]} <span className={type == 'OK' ? styles.ok : styles.error}>{msg[1]}</span> {msg[2]}</td>
+          )
+        }
+      </div>
     </tr>
   )
 }

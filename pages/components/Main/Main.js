@@ -62,7 +62,6 @@ function Main () {
           addCmdHistory( '&!span-start!&show blog&!span-end!& is running...', 'OK' )
           break;
         case 'show info':
-        case 'show information':
           setModeProfile(false)
           setModeBlog(false)
           setModeInformation(true)
@@ -72,6 +71,11 @@ function Main () {
         case 'cls':
           clearCmdHistory()
           break;
+        // case 'help':
+        //   addCmdHistory(`'show profile' プロフィールを表示します。\n`, 'OK')
+        //   addCmdHistory(`'show blog' ブログを表示します。(未実装...)`, 'OK')
+        //   addCmdHistory(`'show info' 製作者の情報を表示します。`, 'OK')
+        //   break
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
             addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`, 'ERROR')
@@ -99,7 +103,7 @@ function Main () {
           {modeInformation ? <Profile title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
         </div>
         <div className={styles.inputform}>
-          <input type="input" className={styles.inputcmd} onKeyDown={handleKeyDown} />
+          <input type="input" className={styles.inputcmd} maxlength='20' placeholder='困ったときは HELP と入力してください。' onKeyDown={handleKeyDown} />
         </div>
       </div>
     </div>

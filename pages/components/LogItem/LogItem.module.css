@@ -3,5 +3,17 @@
 }
 
 .ok {
-  color: yellow;
+  color: #ffff38;
+}
+
+.log {
+  color: #51ff51;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.time {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
 }
