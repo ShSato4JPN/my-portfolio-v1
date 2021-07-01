@@ -15,6 +15,7 @@ import styles from './Browser.module.css'
          <div className={ styles.closebtn} onClick={ props.closeAction }> ✕ </div>
        </div>
        <div className={styles.body}>
+         {props.children}
        </div>
      </div>
    )
