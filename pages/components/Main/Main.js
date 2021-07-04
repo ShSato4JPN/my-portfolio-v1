@@ -1,33 +1,81 @@
-import { useState } from 'react'
-import Profile from '../Browser/Browser'
+import React, { useEffect, useState } from 'react'
+import Browser from '../Browser/Browser'
 import LogItem from '../LogItem/LogItem'
 import styles from './Main.module.css'
 import { getCurrentDate } from '../../../lib/common'
 
 const _maxLogs = 100
+const _browsers = {
+  profile: {
+    title: 'profile',
+    runningMessage: '&!span-start!&show profile&!span-end!& is running...',
+    closeMessage: 'close the profile...'
+  },
+  blog: {
+    title: 'blog',
+    runningMessage: '&!span-start!&show blog&!span-end!& is running...',
+    closeMessage: 'close the blog...'
+  },
+  info: {
+    title: 'blog',
+    runningMessage: '&!span-start!&show info&!span-end!& is running...',
+    closeMessage: 'close the info...'
+  },
+  help: {
+    title: 'help',
+    runningMessage: '&!span-start!&show help&!span-end!& is running...',
+    closeMessage: 'close the help...'
+  },
+}
 
 function Main () {
-
-  // フック
+     // フック
   const [modeProfile, setModeProfile] = useState(false)
   const [modeBlog, setModeBlog] = useState(false)
   const [modeInformation, setModeInformation] = useState(false)
+  const [modeHelp, setModeHelp] = useState(false)
   const [cmdHistory, setCmdHistory] = useState([])
+  const [hooksMap, setHooksMap] = useState([])
+
+  useEffect( () => {
+    let hooks = []
+    hooks.push( {target: 'profile', func: setModeProfile} )
+    hooks.push( {target: 'blog', func: setModeBlog} )
+    hooks.push( {target: 'info', func: setModeInformation} )
+    hooks.push( {target: 'help', func: setModeHelp} )
+    setHooksMap( hooks )
+  }, [])
 
   // wrapper系ファンクション
+  const openBrowser = ( broName ) => {
+    console.log( hooksMap )
+    hooksMap.map( ( r ) => {
+      if ( r['target'] == broName ) {
+        r['func'](true)
+      } else {
+        r['func'](false)
+      }
+    })
+  }
+
   const closeProfile = () => { 
     setModeProfile(false)
-    addCmdHistory( 'close the profile...', 'OK' )
+    addCmdHistory( _browsers.profile.closeMessage, 'OK' )
   }
   
   const closeBlog = () => { 
     setModeBlog(false)
-    addCmdHistory( 'close the blog...', 'OK' )
+    addCmdHistory( _browsers.blog.closeMessage, 'OK' )
   }
   
   const closeInformation = () => { 
     setModeInformation(false)
-    addCmdHistory( 'close the information...', 'OK' )
+    addCmdHistory( _browsers.info.closeMessage, 'OK' )
+  }
+
+  const closeHelp = () => { 
+    setModeHelp(false)
+    addCmdHistory( _browsers.help.closeMessage, 'OK' )
   }
   
   const addCmdHistory = ( msg, type ) => {
@@ -37,12 +85,11 @@ function Main () {
     }
     logs.push( {time: getCurrentDate(), message: msg, type: type} )
     setCmdHistory( logs )
-    console.log( "history : " + type )
   }
 
   const clearCmdHistory = () => {
     setCmdHistory([])
-  }
+  } 
   
   // イベントハンドラー
   const handleKeyDown = ( event ) => {
@@ -50,38 +97,34 @@ function Main () {
     if ( event.key === 'Enter' ) {
       switch ( inCmd.toLowerCase() ) {
         case 'show profile':
-          setModeProfile(true)
-          setModeBlog(false)
-          setModeInformation(false)
-          addCmdHistory( '&!span-start!&show profile&!span-end!& is running...', 'OK' )
+          console.log( 'hello' )
+          openBrowser( _browsers.profile.title )
+          addCmdHistory( _browsers.profile.runningMessage, 'OK' )
           break;
         case 'show blog':
-          setModeProfile(false)
-          setModeBlog(true)
-          setModeInformation(false)
-          addCmdHistory( '&!span-start!&show blog&!span-end!& is running...', 'OK' )
+          openBrowser( _browsers.blog.title )
+          addCmdHistory( _browsers.blog.runningMessage, 'OK' )
           break;
         case 'show info':
-          setModeProfile(false)
-          setModeBlog(false)
-          setModeInformation(true)
-          addCmdHistory( '&!span-start!&show info&!span-end!& is running...' , 'OK')
+          openBrowser( _browsers.info.title )
+          addCmdHistory( _browsers.info.runningMessage, 'OK')
           break;
+        case 'show help':
+            openBrowser( _browsers.help.title )
+            addCmdHistory( _browsers.help.runningMessage, 'OK')
+            break
         case 'clear':
         case 'cls':
           clearCmdHistory()
           break;
-        // case 'help':
-        //   addCmdHistory(`'show profile' プロフィールを表示します。\n`, 'OK')
-        //   addCmdHistory(`'show blog' ブログを表示します。(未実装...)`, 'OK')
-        //   addCmdHistory(`'show info' 製作者の情報を表示します。`, 'OK')
-        //   break
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
             addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`, 'ERROR')
           }
           break;
       }
+
+      event.target.value = ''
     }
   }
 
@@ -98,12 +141,13 @@ function Main () {
           </table>
         </div>
         <div className={styles.browser}>
-          {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
-          {modeBlog ? <Profile title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
-          {modeInformation ? <Profile title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
+          {modeProfile ? <Browser title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
+          {modeBlog ? <Browser title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
+          {modeInformation ? <Browser title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
+          {modeHelp ? <Browser title={ 'HELP' } closeAction={ closeHelp } /> : ''}
         </div>
         <div className={styles.inputform}>
-          <input type="input" className={styles.inputcmd} maxlength='20' placeholder='困ったときは HELP と入力してください。' onKeyDown={handleKeyDown} />
+          <input type="input" className={styles.inputcmd} maxLength='20' placeholder='困ったときは HELP と入力してください。' onKeyDown={handleKeyDown} />
         </div>
       </div>
     </div>

@@ -9,17 +9,21 @@ export default function LogItem ( props ) {
   
   return (
     <tr className={styles.log}>
-      <div className={styles.time}>
-        <td>{time}</td>
-      </div>
-      <div className={styles.message}>
-        {msg.length === 1 ? (
-          <td>{msg[0]}</td>
-          ) : (
-            <td>{msg[0]} <span className={type == 'OK' ? styles.ok : styles.error}>{msg[1]}</span> {msg[2]}</td>
-          )
-        }
-      </div>
+      <td>
+        <div className={styles.time}>
+          {time}
+        </div>
+      </td>
+      <td>
+        <div className={styles.message}>
+          {msg.length === 1 ? (
+              <a>{msg[0]}</a>
+            ) : (
+              <a>{msg[0]} <span className={type == 'OK' ? styles.ok : styles.error}>{msg[1]}</span> {msg[2]}</a>
+            )
+          }
+        </div>
+      </td>
     </tr>
   )
 }
