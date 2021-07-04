@@ -1,3 +1,42 @@
 .tab {
-  font-size: 1.3rem;
+  font-size: 20px;
+}
+
+.header {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header_left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+.header_right {
+  margin-left: 1rem;
+}
+
+.borderCircle {
+  border-radius: 9999px;
+  border: 1px solid skyblue;
+}
+
+.comments {
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.4rem;
+  color: #222222;
+}
+
+.name {
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  color: #222222;
+}
+
+.myname {
+  font-size: 20px;
+  margin-right: 0.2rem;
+  font-weight: 600;
 }

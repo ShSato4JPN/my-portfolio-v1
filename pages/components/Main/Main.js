@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Browser from '../Browser/Browser'
+import Profile from '../Profile/Profile'
 import LogItem from '../LogItem/LogItem'
 import styles from './Main.module.css'
 import { getCurrentDate } from '../../../lib/common'
 
-const _maxLogs = 100
+const _settings = {
+  maxLogs: 100,
+  OK: 'ok',
+  ERROR: 'error',
+  ENTER: 'Enter'
+}
+
 const _browsers = {
   profile: {
     title: 'profile',
@@ -25,11 +32,10 @@ const _browsers = {
     title: 'help',
     runningMessage: '&!span-start!&show help&!span-end!& is running...',
     closeMessage: 'close the help...'
-  },
+  }
 }
 
 function Main () {
-     // フック
   const [modeProfile, setModeProfile] = useState(false)
   const [modeBlog, setModeBlog] = useState(false)
   const [modeInformation, setModeInformation] = useState(false)
@@ -37,6 +43,9 @@ function Main () {
   const [cmdHistory, setCmdHistory] = useState([])
   const [hooksMap, setHooksMap] = useState([])
 
+  /**
+   * 副作用フックをコンストラクタとして使用します。※初回マウント時のみ処理を実施します。
+   */
   useEffect( () => {
     let hooks = []
     hooks.push( {target: 'profile', func: setModeProfile} )
@@ -46,7 +55,10 @@ function Main () {
     setHooksMap( hooks )
   }, [])
 
-  // wrapper系ファンクション
+  /**
+   * 起動画面の state を true に変更し、それ以外の state を false に変更します。
+   * @param {String} broName - 起動する画面(ブラウザ)名を指定します。 
+   */
   const openBrowser = ( broName ) => {
     console.log( hooksMap )
     hooksMap.map( ( r ) => {
@@ -58,6 +70,9 @@ function Main () {
     })
   }
 
+  /**
+   * 画面のクローズ処理を行うファンクションです。呼出し先で使用します。
+   */
   const closeProfile = () => { 
     setModeProfile(false)
     addCmdHistory( _browsers.profile.closeMessage, 'OK' )
@@ -78,40 +93,49 @@ function Main () {
     addCmdHistory( _browsers.help.closeMessage, 'OK' )
   }
   
+  /**
+   * コマンド履歴に出力する情報を設定します。
+   * @param {String} msg - ログに表示するメッセージを設定します。
+   * @param {String} type - ログの種別を設定します。(OK or ERROR) TODO enum にする予定
+   */
   const addCmdHistory = ( msg, type ) => {
     const logs = [...cmdHistory]
-    if ( cmdHistory.length === _maxLogs ) {
+    if ( cmdHistory.length === _settings.maxLogs ) {
       logs.splice( 0, 1 )
     }
     logs.push( {time: getCurrentDate(), message: msg, type: type} )
     setCmdHistory( logs )
   }
 
+  /**
+   * コマンド履歴の内容をクリアします。
+   */
   const clearCmdHistory = () => {
     setCmdHistory([])
   } 
   
-  // イベントハンドラー
+  /**
+   * KeyDownEvent のハンドリング処理を行います。
+   */
   const handleKeyDown = ( event ) => {
     let inCmd = event.target.value.toString()
-    if ( event.key === 'Enter' ) {
+    if ( event.key === _settings.ENTER ) {
       switch ( inCmd.toLowerCase() ) {
         case 'show profile':
-          console.log( 'hello' )
           openBrowser( _browsers.profile.title )
-          addCmdHistory( _browsers.profile.runningMessage, 'OK' )
+          addCmdHistory( _browsers.profile.runningMessage, _settings.OK )
           break;
         case 'show blog':
           openBrowser( _browsers.blog.title )
-          addCmdHistory( _browsers.blog.runningMessage, 'OK' )
+          addCmdHistory( _browsers.blog.runningMessage, _settings.OK )
           break;
         case 'show info':
           openBrowser( _browsers.info.title )
-          addCmdHistory( _browsers.info.runningMessage, 'OK')
+          addCmdHistory( _browsers.info.runningMessage, _settings.OK )
           break;
         case 'show help':
             openBrowser( _browsers.help.title )
-            addCmdHistory( _browsers.help.runningMessage, 'OK')
+            addCmdHistory( _browsers.help.runningMessage, _settings.OK )
             break
         case 'clear':
         case 'cls':
@@ -119,7 +143,7 @@ function Main () {
           break;
         default:
           if ( !(inCmd.replace(/\s+/g, '').length === 0) ) {
-            addCmdHistory(`The command '&!span-start!&${inCmd}&!span-end!&' was not found...`, 'ERROR')
+            addCmdHistory( `The command '&!span-start!&${inCmd}&!span-end!&' was not found...`, _settings.ERROR)
           }
           break;
       }
@@ -141,7 +165,7 @@ function Main () {
           </table>
         </div>
         <div className={styles.browser}>
-          {modeProfile ? <Browser title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
+          {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
           {modeBlog ? <Browser title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
           {modeInformation ? <Browser title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
           {modeHelp ? <Browser title={ 'HELP' } closeAction={ closeHelp } /> : ''}
