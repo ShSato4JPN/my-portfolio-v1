@@ -25,7 +25,8 @@
 
 .comments {
   font-family: 'Noto Sans JP', sans-serif;
-  line-height: 1.4rem;
+  font-weight: 500;
+  line-height: 1.5rem;
   color: #222222;
 }
 
@@ -38,5 +39,11 @@
 .myname {
   font-size: 20px;
   margin-right: 0.2rem;
+  font-weight: 600;
+}
+
+.spotlight {
+  font-size: 17px;
+  margin: 0 0.2rem;
   font-weight: 600;
 }

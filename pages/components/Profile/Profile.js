@@ -28,6 +28,43 @@ function TabPanel(props) {
   );
 }
 
+function Zikoshokai() {
+  return (
+    <div>
+      <header className={styles.header}>
+        <div className={styles.header_left}>
+          <Image priority
+                 src={'/../public/image/dog.jpg'}
+                 className={styles.borderCircle}
+                 height={250}
+                 width={250}
+                 alt='profile image'
+                 onClick={() => {alert('ワン')}}
+          />
+          <h1 className={styles.name}>S.Hokazono</h1>
+          </div>
+            <div className={styles.header_right}>
+              <p className={styles.comments}>
+                はじめまして。<br />
+                <span className={styles.myname}>S.Hokazono</span>と申します。<br />
+                <br />
+                2017年に大学を卒業し、就職を機に念願の上京を果たしました。<br />
+                現在はシステムエンジニアとしてSIerで働いており、<br />
+                日々、パッケージや基幹システムの開発/改修/保守を行っております。<br />
+                <br />
+                コードを組むのは好きで、<span className={styles.spotlight}>JavaScript</span> をメインに色々とお勉強しております。<br />
+                (GitHub の更新頻度は高くないですが。。。)<br />
+                <br />
+                趣味は<span className={styles.spotlight}>バイク</span>で、天気がいい日はよくツーリングに行きます！
+              </p>
+            </div><br />
+      </header>
+      <div className={styles.profile_body}>
+      </div>
+    </div>
+  )
+}
+
 export default function Profile () {
   const title = 'Profile'
   const [value, setValue] = React.useState(0);
@@ -53,45 +90,9 @@ export default function Profile () {
           </Tabs>
         </Paper>
         <TabPanel value={value} index={0}>
-          <div>
-            <header className={styles.header}>
-              <div className={styles.header_left}>
-                <Image priority
-                       src={'/../public/image/dog.jpg'}
-                       className={styles.borderCircle}
-                       height={250}
-                       width={250}
-                       alt='profile image'
-                       onClick={() => {alert('ワン')}}
-                />
-                <h1 className={styles.name}>S.Hokazono</h1>
-              </div>
-              <div className={styles.header_right}>
-                <p className={styles.comments}>
-                  はじめまして。<br />
-                  就職を機に上京し早4年が経ち、東京にも大分慣れてきた<br />
-                  <span className={styles.myname}>S.Hokazono</span>と申します。<br />
-                  <br />
-                  大学からプログラミングを始め、<br />
-                  特に画像処理系のプログラムを書くのが得意でした。<br />
-                  コードを組むのは好きで、JavaScript をメインに色々とお勉強しております。<br />
-                  (GitHub の更新頻度は高くないですが。。。)<br />
-                  <br />
-                  現職では、Java, VB.NET, C# 等を用いた基幹システム<br />
-                  JavaScriptやニッチな言語を用いた、webシステムの開発/保守を行っております。<br />
-                  また、SQLは Oracle, SQL Server を主に使用しております。<br />
-                  <br />
-                  趣味はバイクで、夜な夜な東京の街を走り回っています！
-                </p>
-              </div>
-            </header>
-            <div className={styles.profile_body}>
-
-            </div>
-          </div>
+          <Zikoshokai />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
         </TabPanel>
         <TabPanel value={value} index={2}>
           Item Three
