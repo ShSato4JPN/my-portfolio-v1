@@ -1,31 +1,18 @@
 import Browser from '../Browser/Browser'
 import styles from './Profile.module.css'
 
-import Grid from '@material-ui/core/Grid';
-import Image from 'next/image'
 import React from 'react'
 import Paper from '@material-ui/core/Paper'
+import Image from 'next/image'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    height: 140,
-    width: 100,
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
-}));
 
 const Accordion = withStyles({
   root: {
@@ -67,6 +54,16 @@ const AccordionDetails = withStyles((theme) => ({
     padding: theme.spacing(2),
   },
 }))(MuiAccordionDetails);
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -142,10 +139,12 @@ function Shokureki() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
-            研修中の成績が良かったことから、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
-            先輩方の力を借りつつ無事完成させることができました。(社会人初仕事！)<br />
-            その他は、雑務や先輩のお手伝いをしながら OJT で基本的な業務を学びました。<br />
+            <p className={styles.comments}>
+              約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
+              研修中の成績が良かったことから、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
+              先輩方の力を借りつつ無事完成させることができました。(社会人初仕事🎉)<br />
+              その他は、雑務や先輩のお手伝いをしながら OJT で基本的な業務を学びました。<br />
+            </p>
           </Typography>
        </AccordionDetails>
       </Accordion>
@@ -189,23 +188,60 @@ function Shokureki() {
 }
 
 function ZikoPR() {
+  const classes = useStyles();
+
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={2}>
-          <Grid>
-            <Paper>
-              <h1>test</h1>
+    <div>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <div className={styles.pr}>
+                <div className={styles.pr_title}>
+                  長所
+                </div>
+                <div className={styles.pr_body}>
+                  フットワークが軽く、興味のあることは積極的に学んだり行動するところです。
+                  実務においても、開発以外にはネットワーク構築や物理サーバのセットアップ等、
+                  普段できないような仕事も積極的に経験させていただきました。
+                  現在は、会社から研究費をいただき他社システムとのAPI連携の調査や機能拡張
+                  をPLとして行っております。<span className={styles.small}>(規模は小さいですが...)</span>
+                </div>
+              </div>
             </Paper>
           </Grid>
-          <Grid>
-            <Paper>
-              <h1>test</h1>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <div className={styles.pr}>
+                <div className={styles.pr_title}>
+                  短所
+                </div>
+                <div className={styles.pr_body}>
+                  1つの作業を行っていると、1点集中しがちなところです。<br />
+                  作業に没頭しすぎて社内打ち合わせの時間を忘れてしまう、という失態を過去に幾度も犯していました。。
+                  現在は「作業前に必ずスケジュールの確認」、「ポップアップ通知」、「適度な休憩」を意識するようになったことで、ミスがほぼなくなり、短所を克服できたと思います！
+                  <span className={styles.small}>（思います...）</span>
+                </div>
+              </div>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <div className={styles.pr}>
+                <div className={styles.pr_title}>
+                  メッセージ
+                </div>
+                <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                  プログラミングに興味があることから、趣味で自作掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
+                  正直なところ、Webサイトの構築等はほとんどが独学ですので、Web業界で即戦力になるかは不安なところはあります。<br />
+                  しかし、この先エンジニアとして生きていく覚悟ですので、貪欲で知識を吸収する気で1日でも早く即戦力になります！！
+                </div>
+              </div>
             </Paper>
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   )
 }
 
