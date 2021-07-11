@@ -8,6 +8,9 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
@@ -168,6 +171,12 @@ function Shokureki() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
             sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -180,6 +189,12 @@ function Shokureki() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
             sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -189,9 +204,126 @@ function Shokureki() {
 
 function ZikoPR() {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    chosho: true,
+    tansho: true,
+    message: true
+  });
+
+  const handleChange = (event) => {
+    //console.log({ ...state, [event.target.name]: event.target.checked })
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
   return (
-    <div>
+    <div className={styles.zikopr}>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.chosho}
+                    onChange={handleChange}
+                    name="chosho"
+                    color="primary"
+                  />
+                }
+                label="長所"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.tansho}
+                    onChange={handleChange}
+                    name="tansho"
+                    color="primary"
+                  />
+                }
+                label="短所"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.message}
+                    onChange={handleChange}
+                    name="message"
+                    color="primary"
+                  />
+                }
+                label="メッセージ"
+              />
+            </FormGroup>
+          </Grid>
+          {state.chosho ? 
+            <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <div className={styles.pr}>
+                <div className={styles.pr_title}>
+                  長所
+                </div>
+                <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                  <span className={styles.spotlight_light}>①フットワークが軽い</span><br />
+                  　興味のあることは積極的に学んだり行動するところ<br />
+                  　やると決めたことは達成するまで努力するところ<br />
+                  <span className={styles.spotlight_light}>②責任感が強く、粘り強い</span><br />
+                  　頼まれたことは、たとえ泥臭くてでも達成するところ
+                  </div>
+                </div>
+              </Paper>
+            </Grid>
+          : 
+            ''
+          }
+          {state.tansho ?
+            <Grid item xs={6}>
+              <Paper className={classes.paper}>
+                <div className={styles.pr}>
+                  <div className={styles.pr_title}>
+                    短所
+                  </div>
+                  <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                  <span className={styles.spotlight_light}>①マイペース</span><br />
+                  　1つの作業に意識が集中しすぎてしまうところ<br />
+                  <span className={styles.spotlight_light}>②口下手</span><br />
+                  　自分が喋っている途中に、話の矛盾点や説明不足などに気づいて焦ってしまうところ（話すスピードが早いのもある）
+                  </div>
+                </div>
+              </Paper>
+            </Grid>
+          :
+            ''
+          }
+          {state.message ?
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <div className={styles.pr}>
+                  <div className={styles.pr_title}>
+                    メッセージ
+                  </div>
+                  <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                    コードを書くのが好きな方なので、趣味で掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
+                    正直なところ、Webサイトの構築等はほとんどが独学ですので、Web業界で即戦力になれるかは不安なところはあります。<br />
+                    しかし、この先Webエンジニアとして生きていくため、貪欲で知識を吸収して1日でも早く即戦力になります🔥
+                  </div>
+                </div>
+              </Paper>
+            </Grid>
+          :
+            ''
+          }
+        </Grid>
+      </div>
+    </div>
+  )
+}
+
+function Skills() {
+  const classes = useStyles();
+
+  return (
+    <div className={styles.zikopr}>
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
@@ -200,12 +332,9 @@ function ZikoPR() {
                 <div className={styles.pr_title}>
                   長所
                 </div>
-                <div className={styles.pr_body}>
-                  フットワークが軽く、興味のあることは積極的に学んだり行動するところです。
-                  実務においても、開発以外にはネットワーク構築や物理サーバのセットアップ等、
-                  普段できないような仕事も積極的に経験させていただきました。
-                  現在は、会社から研究費をいただき他社システムとのAPI連携の調査や機能拡張
-                  をPLとして行っております。<span className={styles.small}>(規模は小さいですが...)</span>
+                <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                  フットワークが軽く、興味のあることは積極的に学んだり行動するところです！<br />
+                  あと、責任感が強い人間だと自負しております。
                 </div>
               </div>
             </Paper>
@@ -216,11 +345,12 @@ function ZikoPR() {
                 <div className={styles.pr_title}>
                   短所
                 </div>
-                <div className={styles.pr_body}>
-                  1つの作業を行っていると、1点集中しがちなところです。<br />
-                  作業に没頭しすぎて社内打ち合わせの時間を忘れてしまう、という失態を過去に幾度も犯していました。。
-                  現在は「作業前に必ずスケジュールの確認」、「ポップアップ通知」、「適度な休憩」を意識するようになったことで、ミスがほぼなくなり、短所を克服できたと思います！
-                  <span className={styles.small}>（思います...）</span>
+                <div className={`${styles.pr_body} ${styles.nocenter}`}>
+                  1つの作業を行っていると、1点集中しがちなところです。（マイペース）<br />
+                  1.<br />
+                  2.<br />
+                  3.<br />
+                  を徹底することで、ミスが大分少なくなりました！<br />
                 </div>
               </div>
             </Paper>
@@ -232,9 +362,9 @@ function ZikoPR() {
                   メッセージ
                 </div>
                 <div className={`${styles.pr_body} ${styles.nocenter}`}>
-                  プログラミングに興味があることから、趣味で自作掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
-                  正直なところ、Webサイトの構築等はほとんどが独学ですので、Web業界で即戦力になるかは不安なところはあります。<br />
-                  しかし、この先エンジニアとして生きていく覚悟ですので、貪欲で知識を吸収する気で1日でも早く即戦力になります！！
+                  コードを書くのが好きな方なので、趣味で簡易的な掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
+                  正直なところ、Webサイト構築に関するスキルはほとんどが独学ですので、Web業界で即戦力になれるかは不安なところはあります。<br />
+                  しかし、この先Webエンジニアとして生きていくため、貪欲に知識を吸収して1日でも早く即戦力になります🔥
                 </div>
               </div>
             </Paper>
@@ -267,6 +397,7 @@ export default function Profile () {
             <Tab label={<span className={styles.tab}>自己紹介</span>} />
             <Tab label={<span className={styles.tab}>職歴</span>} />
             <Tab label={<span className={styles.tab}>自己PR</span>} />
+            <Tab label={<span className={styles.tab}>スキル</span>} />
           </Tabs>
         </Paper>
         <TabPanel value={value} index={0}>
@@ -277,6 +408,9 @@ export default function Profile () {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <ZikoPR />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <Skills />
         </TabPanel>
       </Browser>
     </div>

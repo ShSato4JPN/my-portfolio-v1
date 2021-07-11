@@ -46,6 +46,12 @@
   font-weight: 600;
 }
 
+.spotlight_light {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  font-weight: 550;
+}
+
 .small {
   font-size: 0.85rem;
 }
@@ -76,4 +82,10 @@
 
 .nocenter {
   text-align: left;
+}
+
+.zikopr {
+  height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
