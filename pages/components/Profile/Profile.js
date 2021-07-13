@@ -128,7 +128,7 @@ function Zikoshokai() {
 
 
 function Shokureki() {
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = React.useState('');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -144,9 +144,8 @@ function Shokureki() {
           <Typography>
             <p className={styles.comments}>
               約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
-              研修中の成績が良かったことから、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
+              課に配属後は、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
               先輩方の力を借りつつ無事完成させることができました。(社会人初仕事🎉)<br />
-              その他は、雑務や先輩のお手伝いをしながら OJT で基本的な業務を学びました。<br />
             </p>
           </Typography>
        </AccordionDetails>
@@ -157,8 +156,20 @@ function Shokureki() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            2年目には、大きな案件を2つ経験しました。<br />
-            <div></div>
+            <p className={styles.comments}>
+              <div className={styles.shokurekiTitle}>
+                <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト</span><br />
+              </div>
+              　「VB6」から「VB.NET」,「C#」へのマイグレーション作業で、とにかく本数と不具合が多く、何度も心が折れそうになりました。が、気合で乗り切りました。。
+              <span className={styles.small}>（今思えばそんな大したことなかったかも...）</span><br />
+              本プロジェクトでは、要件定義から設計書の作成、開発、テストまでを一貫して経験しました。<br /><br />
+              <div className={styles.shokurekiTitle}>
+                <span className={styles.spotlight_light}>②Web基幹システムの開発プロジェクト</span><br />
+              </div>
+              　Java, JavaScript を用いたweb基幹システムの開発案件にプログラマーとして参画しました。<br />
+              初めてのWeb案件でウキウキだったのですが、大炎上してしまいヒーヒー言いながら作業していました。。<br />
+              そんな中、本案件で最も開発規模の大きな在庫更新プログラムの開発を担当しました。(誇)
+            </p>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -168,15 +179,15 @@ function Shokureki() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <p className={styles.comments}>
+              <div className={styles.shokurekiTitle}>
+                <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト No2</span><br />
+              </div>
+              　前年とは違うお客様の基幹システムのマイグレーション作業を行いました。<br />
+              前年の経験と、炎上案件の経験が自分を成長させていたのか分かりませんが、もの凄いスピードで作業が進み<br />
+              想定していたスケジュールを大幅に短縮させることができました。<br />
+              その成果が評価され、毎期末に選ばれる優秀エンジニア賞を受賞しました。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
+            </p>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -186,18 +197,29 @@ function Shokureki() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <p className={styles.comments}>
+              <div className={styles.shokurekiTitle}>
+                <span className={styles.spotlight_light}>①Web基幹システムの開発プロジェクト No2</span><br />
+              </div>
+              　Web案件ですが、少し変わった言語を使用したWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
+              こちらはとにかくタイトなスケジュールが組まれており、周りからは炎上案件認定されていました。。<br />
+              しかし、自分含めプログラマーの方々が努力した結果、無事納期までに全画面の開発を終了することができました。<br />
+              そのおかげで、二度目の優秀エンジニア賞を受賞することができました 笑。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
+            </p>
           </Typography>
         </AccordionDetails>
       </Accordion>
+      {!expanded ?
+        <div className={styles.comments}>
+          <br />
+          ※注意<br />
+          職歴は、長期プロジェクトのみ記載しております。<br />
+          比較的規模の小さな案件に関しては記述しておりません。<br />
+          また、会社が特定されそうな記述に関しては、抽象的な表現を使用させていただいております。<br />
+        </div>
+      :
+        ''
+      }
     </div>
   )
 }
@@ -211,7 +233,6 @@ function ZikoPR() {
   });
 
   const handleChange = (event) => {
-    //console.log({ ...state, [event.target.name]: event.target.checked })
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
@@ -330,11 +351,19 @@ function Skills() {
             <Paper className={classes.paper}>
               <div className={styles.pr}>
                 <div className={styles.pr_title}>
-                  長所
+                  業務で使用する（した）技術
                 </div>
                 <div className={`${styles.pr_body} ${styles.nocenter}`}>
-                  フットワークが軽く、興味のあることは積極的に学んだり行動するところです！<br />
-                  あと、責任感が強い人間だと自負しております。
+                  ・VB.NET<br />
+                  ・C#<br />
+                  ・Java<br />
+                  ・JavaScript<br />
+                  ・Python（API連携する程度）<br />
+                  ・Oracle<br />
+                  ・SQL Server<br />
+                  ・PostgreSQL<br />
+                  ・Linux（Ubuntu）<br />
+                  <br />
                 </div>
               </div>
             </Paper>
@@ -343,28 +372,32 @@ function Skills() {
             <Paper className={classes.paper}>
               <div className={styles.pr}>
                 <div className={styles.pr_title}>
-                  短所
+                  趣味で学んだ/使用した技術
                 </div>
                 <div className={`${styles.pr_body} ${styles.nocenter}`}>
-                  1つの作業を行っていると、1点集中しがちなところです。（マイペース）<br />
-                  1.<br />
-                  2.<br />
-                  3.<br />
-                  を徹底することで、ミスが大分少なくなりました！<br />
+                  ・C#<br />
+                  ・Java<br />
+                  ・JavaScript<br />
+                  ・Node.JS<br />
+                  ・Ruby（Rails）<br />
+                  ・PHP（2年ほど触っていませんが。。）<br />
+                  ・Linux（Ubuntu, CentOS）<br />
+                  ・PostgreSQL<br />
+                  ・MySQL<br />
+                  ・VirualBox, VM Ware
                 </div>
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={3} />
+          <Grid item xs={6}>
             <Paper className={classes.paper}>
               <div className={styles.pr}>
                 <div className={styles.pr_title}>
-                  メッセージ
+                  技術系保有資格
                 </div>
                 <div className={`${styles.pr_body} ${styles.nocenter}`}>
-                  コードを書くのが好きな方なので、趣味で簡易的な掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
-                  正直なところ、Webサイト構築に関するスキルはほとんどが独学ですので、Web業界で即戦力になれるかは不安なところはあります。<br />
-                  しかし、この先Webエンジニアとして生きていくため、貪欲に知識を吸収して1日でも早く即戦力になります🔥
+                  ・Comp TIA Colud+  <span className={styles.small}>（だけです...）</span>
                 </div>
               </div>
             </Paper>
@@ -375,7 +408,7 @@ function Skills() {
   )
 }
 
-export default function Profile () {
+export default function Profile ( props ) {
   const title = 'Profile'
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -384,7 +417,7 @@ export default function Profile () {
 
   return (
     <div>
-      <Browser title={title}>
+      <Browser title={title} closeAction={props.closeAction}>
         <Paper>
            <Tabs
             className={styles.tabs}

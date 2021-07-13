@@ -48,8 +48,11 @@
 
 .spotlight_light {
   font-size: 1.2rem;
-  margin-bottom: 0.2rem;
   font-weight: 550;
+}
+
+.shokurekiTitle {
+  margin-bottom: 0.5rem;
 }
 
 .small {
