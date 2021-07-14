@@ -1,0 +1,94 @@
+.tab {
+  font-size: 20px;
+}
+
+.header {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header_left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+.header_right {
+  margin-left: 1rem;
+}
+
+.borderCircle {
+  border-radius: 9999px;
+  border: 1px solid skyblue;
+}
+
+.comments {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #484848;
+}
+
+.name {
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  color: #2e2e2e;
+  padding: 0.3rem;
+  border-bottom: 4px solid lightgrey;
+  border-radius: 4px;
+}
+
+.spotlight {
+  font-size: 20px;
+  margin-right: 0.2rem;
+  color: #2e2e2e;
+  font-weight: 600;
+}
+
+.spotlight_light {
+  font-size: 1.2rem;
+  font-weight: 550;
+}
+
+.shokurekiTitle {
+  margin-bottom: 0.5rem;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.title {
+  width: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
+  color: #484848;
+  text-align: center;
+}
+
+.pr {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.pr_title {
+  background-color: #e5e5e5;
+  font-size: 1.5rem;
+  padding: 0.3rem;
+}
+
+.pr_body {
+  padding: 0.2rem;
+  color: #484848;
+  line-height: 1.7;
+}
+
+.nocenter {
+  text-align: left;
+}
+
+.zikopr {
+  height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

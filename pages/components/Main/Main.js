@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Browser from '../Browser/Browser'
 import Profile from '../Profile/Profile'
+import Help from '../Help/Help'
 import LogItem from '../LogItem/LogItem'
 import styles from './Main.module.css'
 import { getCurrentDate } from '../../../lib/common'
@@ -133,10 +134,10 @@ function Main () {
           openBrowser( _browsers.info.title )
           addCmdHistory( _browsers.info.runningMessage, _settings.OK )
           break;
-        case 'show help':
-            openBrowser( _browsers.help.title )
-            addCmdHistory( _browsers.help.runningMessage, _settings.OK )
-            break
+        case 'help':
+          openBrowser( _browsers.help.title )
+          addCmdHistory( _browsers.help.runningMessage, _settings.OK )
+          break
         case 'clear':
         case 'cls':
           clearCmdHistory()
@@ -168,7 +169,7 @@ function Main () {
           {modeProfile ? <Profile title={ 'PROFILE' } closeAction={ closeProfile } /> : ''}
           {modeBlog ? <Browser title={ 'BLOG' } closeAction={ closeBlog } /> : ''}
           {modeInformation ? <Browser title={ 'INFORMATION' } closeAction={ closeInformation } /> : ''}
-          {modeHelp ? <Browser title={ 'HELP' } closeAction={ closeHelp } /> : ''}
+          {modeHelp ? <Help title={ 'HELP' } closeAction={ closeHelp } /> : ''}
         </div>
         <div className={styles.inputform}>
           <input type="input" className={styles.inputcmd} maxLength='20' placeholder='困ったときは HELP と入力してください。' onKeyDown={handleKeyDown} />
@@ -176,7 +177,6 @@ function Main () {
       </div>
     </div>
   )
-
 }
 
 export default Main
