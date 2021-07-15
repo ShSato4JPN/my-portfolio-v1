@@ -10,28 +10,30 @@ const _settings = {
   maxLogs: 100,
   OK: 'ok',
   ERROR: 'error',
-  ENTER: 'Enter'
+  ENTER: 'Enter',
+  MAIL: 'MAIL : &!span-start!&hokazono.satoshi.1221@gmail.com&!span-end!&',
+  GITHUB: 'GITHUB : &!span-start!&https://github.com/ShSato4JPN&!span-end!&'
 }
 
 const _browsers = {
   profile: {
     title: 'profile',
-    runningMessage: '&!span-start!&show profile&!span-end!& is running...',
+    runningMessage: '&!span-start!&profile&!span-end!& is running...',
     closeMessage: 'close the profile...'
   },
   blog: {
     title: 'blog',
-    runningMessage: '&!span-start!&show blog&!span-end!& is running...',
+    runningMessage: '&!span-start!&blog&!span-end!& is running...',
     closeMessage: 'close the blog...'
   },
   info: {
     title: 'blog',
-    runningMessage: '&!span-start!&show info&!span-end!& is running...',
+    runningMessage: '&!span-start!&info&!span-end!& is running...',
     closeMessage: 'close the info...'
   },
   help: {
     title: 'help',
-    runningMessage: '&!span-start!&show help&!span-end!& is running...',
+    runningMessage: '&!span-start!&help&!span-end!& is running...',
     closeMessage: 'close the help...'
   }
 }
@@ -101,10 +103,14 @@ function Main () {
    */
   const addCmdHistory = ( msg, type ) => {
     const logs = [...cmdHistory]
-    if ( cmdHistory.length === _settings.maxLogs ) {
-      logs.splice( 0, 1 )
-    }
-    logs.push( {time: getCurrentDate(), message: msg, type: type} )
+
+    let msgs = msg.split( ',' );
+    msgs.map( (m) => {
+      if ( logs.length === _settings.maxLogs ) {
+        logs.splice( 0, 1 )
+      }
+      logs.push( {time: getCurrentDate(), message: m, type: type} )
+    })
     setCmdHistory( logs )
   }
 
@@ -123,6 +129,7 @@ function Main () {
     if ( event.key === _settings.ENTER ) {
       switch ( inCmd.toLowerCase() ) {
         case 'show profile':
+        case 'profile':
           openBrowser( _browsers.profile.title )
           addCmdHistory( _browsers.profile.runningMessage, _settings.OK )
           break;
@@ -131,9 +138,21 @@ function Main () {
           addCmdHistory( _browsers.blog.runningMessage, _settings.OK )
           break;
         case 'show info':
-          openBrowser( _browsers.info.title )
-          addCmdHistory( _browsers.info.runningMessage, _settings.OK )
+        case 'info':
+          const info = `${_settings.GITHUB},${_settings.MAIL}`
+          addCmdHistory( info, _settings.OK )
           break;
+        case 'show mail':
+        case 'mail':
+          //openBrowser( _browsers.info.title )
+          addCmdHistory( _settings.MAIL, _settings.OK )
+          break;
+        case 'show github':
+        case 'github':
+          //openBrowser( _browsers.info.title )
+          addCmdHistory( _settings.GITHUB, _settings.OK )
+          break;
+        case 'show help':
         case 'help':
           openBrowser( _browsers.help.title )
           addCmdHistory( _browsers.help.runningMessage, _settings.OK )
