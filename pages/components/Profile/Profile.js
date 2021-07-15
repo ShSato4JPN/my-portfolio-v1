@@ -15,48 +15,6 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-
-const Accordion = withStyles({
-  root: {
-    border: '1px solid rgba(0, 0, 0, .125)',
-    boxShadow: 'none',
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-    '&$expanded': {
-      margin: 'auto',
-    },
-  },
-  expanded: {},
-})(MuiAccordion);
-
-const AccordionSummary = withStyles({
-  root: {
-    backgroundColor: 'rgba(0, 0, 0, .03)',
-    borderBottom: '1px solid rgba(0, 0, 0, .125)',
-    marginBottom: -1,
-    minHeight: 56,
-    '&$expanded': {
-      minHeight: 56,
-    },
-  },
-  content: {
-    '&$expanded': {
-      margin: '12px 0',
-    },
-  },
-  expanded: {},
-})(MuiAccordionSummary);
-
-const AccordionDetails = withStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
-}))(MuiAccordionDetails);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,26 +25,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
 
 function Zikoshokai() {
   return (
@@ -130,6 +68,47 @@ function Zikoshokai() {
 function Shokureki() {
   const [expanded, setExpanded] = React.useState('');
 
+  const Accordion = withStyles({
+    root: {
+      border: '1px solid rgba(0, 0, 0, .125)',
+      boxShadow: 'none',
+      '&:not(:last-child)': {
+        borderBottom: 0,
+      },
+      '&:before': {
+        display: 'none',
+      },
+      '&$expanded': {
+        margin: 'auto',
+      },
+    },
+    expanded: {},
+  })(MuiAccordion);
+  
+  const AccordionSummary = withStyles({
+    root: {
+      backgroundColor: 'rgba(0, 0, 0, .03)',
+      borderBottom: '1px solid rgba(0, 0, 0, .125)',
+      marginBottom: -1,
+      minHeight: 56,
+      '&$expanded': {
+        minHeight: 56,
+      },
+    },
+    content: {
+      '&$expanded': {
+        margin: '12px 0',
+      },
+    },
+    expanded: {},
+  })(MuiAccordionSummary);
+  
+  const AccordionDetails = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(2),
+    },
+  }))(MuiAccordionDetails);
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -141,13 +120,11 @@ function Shokureki() {
           <div className={styles.title}>1年目</div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <p className={styles.comments}>
-              約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
-              課に配属後は、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
-              先輩方の力を借りつつ無事完成させることができました。(社会人初仕事🎉)<br />
-            </p>
-          </Typography>
+          <div className={styles.comments}>
+            約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
+            課に配属後は、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
+            先輩方の力を借りつつ無事完成させることができました。(社会人初仕事🎉)<br />
+         </div>
        </AccordionDetails>
       </Accordion>
       <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -155,22 +132,20 @@ function Shokureki() {
           <div className={styles.title}>2年目</div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <p className={styles.comments}>
-              <div className={styles.shokurekiTitle}>
-                <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト</span><br />
-              </div>
-              　「VB6」から「VB.NET」,「C#」へのマイグレーション作業で、とにかく本数と不具合が多く、何度も心が折れそうになりました。が、気合で乗り切りました。。
-              <span className={styles.small}>（今思えばそんな大したことなかったかも...）</span><br />
-              本プロジェクトでは、要件定義から設計書の作成、開発、テストまでを一貫して経験しました。<br /><br />
-              <div className={styles.shokurekiTitle}>
-                <span className={styles.spotlight_light}>②Web基幹システムの開発プロジェクト</span><br />
-              </div>
-              　Java, JavaScript を用いたweb基幹システムの開発案件にプログラマーとして参画しました。<br />
-              初の本格Web案件でウキウキだったのですが、大炎上してしまいヒーヒー言いながら開発していました。。<br />
-              そんな中、本案件のTOP3に入るほどの開発難易度と言われた在庫更新プログラムの開発を担当しました。(誇)
-            </p>
-          </Typography>
+          <div className={styles.comments}>
+            <div className={styles.shokurekiTitle}>
+              <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト</span><br />
+            </div>
+            　「VB6」から「VB.NET」,「C#」へのマイグレーション作業で、とにかく本数と不具合が多く、何度も心が折れそうになりました。が、気合で乗り切りました。。
+            <span className={styles.small}>（今思えばそんな大したことなかったかも...）</span><br />
+            本プロジェクトでは、要件定義から設計書の作成、開発、テストまでを一貫して経験しました。<br /><br />
+            <div className={styles.shokurekiTitle}>
+              <span className={styles.spotlight_light}>②Web基幹システムの開発プロジェクト</span><br />
+            </div>
+            　Java, JavaScript を用いたweb基幹システムの開発案件にプログラマーとして参画しました。<br />
+            初の本格Web案件でウキウキだったのですが、大炎上してしまいヒーヒー言いながら開発していました。。<br />
+            そんな中、本案件のTOP3に入るほどの開発難易度と言われた在庫更新プログラムの開発を担当しました。(誇)
+          </div>
         </AccordionDetails>
       </Accordion>
       <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -178,17 +153,15 @@ function Shokureki() {
           <div className={styles.title}>3年目</div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <p className={styles.comments}>
-              <div className={styles.shokurekiTitle}>
-                <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト No2</span><br />
-              </div>
-              　前年とは異なるお客様の基幹システムのマイグレーション作業を行いました。<br />
-              前年の経験と、炎上案件の経験が自分を成長させていたのか分かりませんが、もの凄いスピードで作業が進み<br />
-              想定していたスケジュールを大幅に短縮させることができました。<br />
-              その成果が評価され、毎期末に選ばれる優秀エンジニア賞を受賞しました。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
-            </p>
-          </Typography>
+          <div className={styles.comments}>
+            <div className={styles.shokurekiTitle}>
+              <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト No2</span><br />
+            </div>
+            　前年とは異なるお客様の基幹システムのマイグレーション作業を行いました。<br />
+            前年の経験と、炎上案件の経験が自分を成長させていたのか分かりませんが、もの凄いスピードで作業が進み<br />
+            想定していたスケジュールを大幅に短縮させることができました。<br />
+            その成果が評価され、毎期末に選ばれる優秀エンジニア賞を受賞しました。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
+          </div>
         </AccordionDetails>
       </Accordion>
       <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -196,17 +169,15 @@ function Shokureki() {
           <div className={styles.title}>4年目</div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <p className={styles.comments}>
-              <div className={styles.shokurekiTitle}>
-                <span className={styles.spotlight_light}>①Web基幹システムの開発プロジェクト No2</span><br />
-              </div>
-              　Web案件ですが、少し変わった言語を使用したWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
-              こちらはとにかくタイトなスケジュールが組まれており、周りからは炎上案件認定されていました。。<br />
-              しかし、自分含めプログラマーの方々が努力した結果、無事納期までに全画面(自分が担当したのは20本ほど)を開発することができました。<br />
-              そのおかげで、二度目の優秀エンジニア賞を受賞することができました 笑。<span className={styles.small}>（何度も言いますが、そんな大した賞ではありません...）</span><br />
-            </p>
-          </Typography>
+          <div className={styles.comments}>
+            <div className={styles.shokurekiTitle}>
+              <span className={styles.spotlight_light}>①Web基幹システムの開発プロジェクト No2</span><br />
+            </div>
+            　Web案件ですが、少し変わった言語を使用したWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
+            こちらはとにかくタイトなスケジュールが組まれており、周りからは炎上案件認定されていました。。<br />
+            しかし、自分含めプログラマーの方々が努力した結果、無事納期までに全画面(自分が担当したのは20本ほど)を開発することができました。<br />
+            そのおかげで、二度目の優秀エンジニア賞を受賞することができました 笑。<span className={styles.small}>（何度も言いますが、そんな大した賞ではありません...）</span><br />
+          </div>
         </AccordionDetails>
       </Accordion>
       {!expanded ?
@@ -414,6 +385,26 @@ export default function Profile ( props ) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={3}>
+            {children}
+          </Box>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div>
