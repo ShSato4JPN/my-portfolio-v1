@@ -10,7 +10,7 @@ import Head from 'next/head'
 export default function CommonHead () {
   return (
     <Head>
-      <title>test</title>
+      <title>ZONO-TERMINAL</title>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <link rel="preconnect" href="https://fonts.googleapis.com" />

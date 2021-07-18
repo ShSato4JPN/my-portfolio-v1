@@ -1,9 +1,9 @@
 import Browser from '../Browser/Browser'
 import styles from './Profile.module.css'
+import Image from 'next/image'
 
 import React from 'react'
 import Paper from '@material-ui/core/Paper'
-import Image from 'next/image'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
+  }
 }));
 
 function Zikoshokai() {
@@ -40,22 +40,22 @@ function Zikoshokai() {
                  onClick={() => {alert('ワン')}}
           />
           <h1 className={styles.name}>S.Hokazono</h1>
-          </div>
-            <div className={styles.header_right}>
-              <p className={styles.comments}>
-                はじめまして。<br />
-                <span className={styles.spotlight}>S.Hokazono</span>と申します。<br />
-                <br />
-                2017年に大学を卒業し、就職を機に念願の上京を果たしました。<br />
-                現在はシステムエンジニアとしてSIerで働いており、<br />
-                日々、パッケージや基幹システムの開発/改修/保守を行っております。<br />
-                <br />
-                現在は、色々なユーザに触っていただけるサービスの開発に携わりたいと思い<br />
-                Web系の企業を中心に転職活動を行う準備をしております。( 2021/07 )<br />
-                <br />
-                趣味はバイクで、天気がいい日はよくツーリングに行きます！
-              </p>
-            </div><br />
+        </div>
+          <div className={styles.header_right}>
+            <p className={styles.comments}>
+              はじめまして。<br />
+              <span className={styles.spotlight}>S.Hokazono</span>と申します。<br />
+              <br />
+              2017年に大学を卒業し、就職を機に念願の上京を果たしました。<br />
+              現在はシステムエンジニアとしてSIerで働いており、<br />
+              日々、パッケージや基幹システムの開発/改修/保守を行っております。<br />
+              <br />
+              現在は、色々なユーザに触っていただけるサービスの開発に携わりたいと思い<br />
+              Web系の企業を中心に転職活動を行う準備をしております。( 2021/07 )<br />
+              <br />
+              趣味はバイクで、天気がいい日はよくツーリングに行きます！
+            </p>
+          </div><br />
       </header>
       <div className={styles.profile_body}>
       </div>
@@ -409,36 +409,34 @@ export default function Profile ( props ) {
   }
 
   return (
-    <div>
-      <Browser title={title} closeAction={props.closeAction}>
-        <Paper>
-           <Tabs
-            className={styles.tabs}
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab label={<span className={styles.tab}>自己紹介</span>} />
-            <Tab label={<span className={styles.tab}>職歴</span>} />
-            <Tab label={<span className={styles.tab}>自己PR</span>} />
-            <Tab label={<span className={styles.tab}>スキル</span>} />
-          </Tabs>
-        </Paper>
-        <TabPanel value={value} index={0}>
-          <Zikoshokai />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Shokureki />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <ZikoPR />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <Skills />
-        </TabPanel>
-      </Browser>
-    </div>
+    <Browser title={title} closeAction={props.closeAction}>
+      <Paper>
+         <Tabs
+          className={styles.tabs}
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab label={<span className={styles.tab}>自己紹介</span>} />
+          <Tab label={<span className={styles.tab}>職歴</span>} />
+          <Tab label={<span className={styles.tab}>自己PR</span>} />
+          <Tab label={<span className={styles.tab}>スキル</span>} />
+        </Tabs>
+      </Paper>
+      <TabPanel value={value} index={0}>
+        <Zikoshokai />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <Shokureki />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <ZikoPR />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <Skills />
+      </TabPanel>
+    </Browser>
   )
 }
