@@ -4,7 +4,6 @@
 
 .about {
   font-family: 'Noto Sans JP', sans-serif;
-
 }
 
 .about_title {
@@ -21,4 +20,8 @@
 
 .nocenter {
   text-align: left;
+}
+
+.test {
+  font-size: 2rem;
 }

@@ -7,14 +7,14 @@ import Paper from '@material-ui/core/Paper'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import Grid from '@material-ui/core/Grid'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import { withStyles, makeStyles } from '@material-ui/core/styles'
+import MuiAccordion from '@material-ui/core/Accordion'
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,8 +62,6 @@ function Zikoshokai() {
     </div>
   )
 }
-
-
 
 function Shokureki() {
   const [expanded, setExpanded] = React.useState('');
@@ -188,7 +186,7 @@ function Shokureki() {
           ※注意<br />
           職歴は、長期プロジェクトのみ記載しております。<br />
           比較的規模の小さな案件に関しては記述しておりません。<br />
-          また、会社が特定されそうな記述に関しては、抽象的な表現を使用させていただいております。<br />
+          また、会社が特定されそうな記述に関しては、抽象的な表現をとらせていただいております。<br />
         </div>
       :
         ''
