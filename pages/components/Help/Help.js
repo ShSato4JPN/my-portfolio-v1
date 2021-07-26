@@ -21,11 +21,15 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     maxWidth: 600,
+    height: 100,
   },
+  noborder: {
+    border: 0,
+  }
 }));
 
-function createData(cmd, desc) {
-  return { cmd, desc };
+function createData(cmd, description) {
+  return { cmd, description };
 }
 
 const rows = [
@@ -69,10 +73,12 @@ export default function Help( props ) {
                     <TableContainer>
                       <Table className={classes.table} aria-label="command description">
                         <TableBody>
+                          <TableCell align="center" component="th" scope="row" className={classes.noborder}><span className={`${styles.about}`}>コマンド</span></TableCell>
+                          <TableCell align="center" className={classes.noborder}><span className={`${styles.about} ${styles.about_body}`}>内容</span></TableCell>
                           {rows.map((row) => (
                             <TableRow key={row.name}>
-                              <TableCell component="th" scope="row"><span className={`${styles.about} ${styles.about_body}`}>{row.cmd}</span></TableCell>
-                              <TableCell align="center"><span className={`${styles.about} ${styles.about_body}`}>{row.desc}</span></TableCell>
+                              <TableCell align="center" component="th" scope="row" className={classes.noborder}><span className={`${styles.about}`}>{row.cmd}</span></TableCell>
+                              <TableCell align="left" className={classes.noborder}><span className={`${styles.about} ${styles.about_body}`}>{row.description}</span></TableCell>
                             </TableRow>
                           ))}
                         </TableBody>

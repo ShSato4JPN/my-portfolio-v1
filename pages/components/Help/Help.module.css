@@ -12,16 +12,18 @@
   padding: 0.3rem;
 }
 
+.about_cmdlist {
+  width: 660px;
+  margin: 0 auto;
+}
+
 .about_body {
   padding: 0.2rem;
   color: #484848;
   line-height: 1.7;
+  margin: 0 auto;
 }
 
 .nocenter {
   text-align: left;
-}
-
-.test {
-  font-size: 2rem;
 }
