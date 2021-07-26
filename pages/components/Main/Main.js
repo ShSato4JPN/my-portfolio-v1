@@ -4,6 +4,7 @@ import Profile from '../Profile/Profile'
 import Help from '../Help/Help'
 import LogItem from '../LogItem/LogItem'
 import styles from './Main.module.css'
+import Image from 'next/image'
 import { getCurrentDate } from '../../../lib/common'
 
 const _settings = {
@@ -176,6 +177,14 @@ function Main () {
   return (
     <div>
       <div className={ styles.main } >
+        <div className={styles.titlelogo}>
+          <Image priority
+                 src={'/../public/image/title_logo.png'}
+                 height={120}
+                 width={650}
+                 alt='title logo'
+          />
+        </div>
         <div className={styles.consoleform}>
           <table>
             <tbody>

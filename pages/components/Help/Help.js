@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   table: {
-    maxWidth: 600,
+    maxWidth: 660,
     height: 100,
   },
   noborder: {
@@ -35,13 +35,17 @@ function createData(cmd, description) {
 const rows = [
   createData('show profile (or profile)', 'プロフィール画面を表示します。'),
   createData('show info (or info)', '製作者のメールアドレス等を表示します。'),
-  createData('show help (or help)', 'ZONO-TERMINALの説明ページを表示します。'),
+  createData('show help (or help)', 'ZONO-TERMINALの説明ページを表示します。(本ページです)'),
   createData('clear (or cls)', 'コンソールをクリアします。'),
 ];
 
 export default function Help( props ) {
   const classes = useStyles();
   const title = 'Help'
+
+  const handleKeyDown = ( event ) => {
+    console.log( event )
+  }
 
   return (
     <Browser title={title} closeAction={props.closeAction}>
@@ -68,16 +72,14 @@ export default function Help( props ) {
                   コマンドについて
                 </div>
                 <div className={`${styles.about_body} ${styles.nocenter}`}>
-                  <p>　数は少ないですが、当ページはコマンドを入力することでプロフィール画面やデータを表示することができます。<br /></p>
+                  <p>　数は少ないですが、当ページはコマンドを入力することでプロフィール画面やデータを表示することができます。<br />　コマンドは以下のとおりです。<br /></p>
                   <div className={styles.about_cmdlist}>
                     <TableContainer>
                       <Table className={classes.table} aria-label="command description">
                         <TableBody>
-                          <TableCell align="center" component="th" scope="row" className={classes.noborder}><span className={`${styles.about}`}>コマンド</span></TableCell>
-                          <TableCell align="center" className={classes.noborder}><span className={`${styles.about} ${styles.about_body}`}>内容</span></TableCell>
-                          {rows.map((row) => (
-                            <TableRow key={row.name}>
-                              <TableCell align="center" component="th" scope="row" className={classes.noborder}><span className={`${styles.about}`}>{row.cmd}</span></TableCell>
+                          {rows.map((row, index) => (
+                            <TableRow key={index}>
+                              <TableCell onClick={handleKeyDown} align="center" component="th" scope="row" className={classes.noborder}><span className={`${styles.about}`}>{row.cmd}</span></TableCell>
                               <TableCell align="left" className={classes.noborder}><span className={`${styles.about} ${styles.about_body}`}>{row.description}</span></TableCell>
                             </TableRow>
                           ))}
