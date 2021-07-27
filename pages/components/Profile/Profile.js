@@ -32,7 +32,7 @@ function Zikoshokai() {
       <header className={styles.header}>
         <div className={styles.header_left}>
           <Image priority
-                 src={'/../public/image/dog.jpg'}
+                 src={'/../static/dog.jpg'}
                  className={styles.borderCircle}
                  height={250}
                  width={250}
