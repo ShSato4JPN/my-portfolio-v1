@@ -179,7 +179,7 @@ function Main () {
       <div className={ styles.main } >
         <div className={styles.titlelogo}>
           <Image priority
-                 src={'/../static/title_logo.png'}
+                 src='/static/title_logo.png'
                  height={120}
                  width={650}
                  alt='title logo'
