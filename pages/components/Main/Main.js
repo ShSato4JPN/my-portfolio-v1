@@ -14,7 +14,7 @@ const _settings = {
   ENTER: 'Enter',
   MAIL: 'MAIL : &!span-start!&hokazono.satoshi.1221@gmail.com&!span-end!&',
   GITHUB: 'GITHUB : &!span-start!&https://github.com/ShSato4JPN&!span-end!&',
-  INFOMSG: 'Display information'
+  INFOMSG: 'Display information...'
 }
 
 const _browsers = {
