@@ -50,10 +50,11 @@ function Zikoshokai() {
               現在はシステムエンジニアとしてSIerで働いており、<br />
               日々、パッケージや基幹システムの開発/改修/保守を行っております。<br />
               <br />
-              現在は、色々なユーザに触っていただけるサービスの開発に携わりたいと思い<br />
-              Web系の企業を中心に転職活動を行う準備をしております。( 2021/07 )<br />
+              様々なユーザに利用していただけるサービスの開発に携わりたいと思い<br />
+              Web系の企業を中心に転職活動中です。( 2021/07 )<br />
               <br />
-              趣味はバイクで、天気がいい日はよくツーリングに行きます！
+              趣味はバイクで、天気がいい日はよくツーリングに行きます！<br />
+              <a href='https://www.yamaha-motor.co.jp/mc/lineup/xsr900/'>(XSR900に乗っています)</a>
             </p>
           </div><br />
       </header>
@@ -119,7 +120,7 @@ function Shokureki() {
         </AccordionSummary>
         <AccordionDetails>
           <div className={styles.comments}>
-            約半年間研修で社会人の基礎や開発のノウハウを学びました。<br />
+            約半年間の研修で社会人の基礎や開発のノウハウを学びました。<br />
             課に配属後は、展示会に出展する簡単なWebアプリケーションの開発をお願いされ、<br />
             先輩方の力を借りつつ無事完成させることができました。(社会人初仕事🎉)<br />
          </div>
@@ -132,17 +133,17 @@ function Shokureki() {
         <AccordionDetails>
           <div className={styles.comments}>
             <div className={styles.shokurekiTitle}>
-              <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト</span><br />
+              <span className={styles.spotlight_light}>①基幹システムのマイグレーションプロジェクト</span><br />
             </div>
             　「VB6」から「VB.NET」,「C#」へのマイグレーション作業で、とにかく本数と不具合が多く、<br />
             当時の自分にとっては非常に厄介で苦労したプロジェクトでした。
             <span className={styles.small}>（今思えばそんな大したことなかったかも）</span><br />
-            本プロジェクトでは、要件定義から設計書の作成、開発、テストまでを一貫して経験しました。<br /><br />
+            本プロジェクトでは、要件定義から設計書の作成、開発、テストまでを一貫して行いました。<br /><br />
             <div className={styles.shokurekiTitle}>
               <span className={styles.spotlight_light}>②Web基幹システムの開発プロジェクト</span><br />
             </div>
-            　Java, JavaScript を用いたweb基幹システムの開発案件にプログラマーとして参画しました。<br />
-            初の本格Web案件でウキウキだったのですが、大炎上してしまいヒーヒー言いながら開発していました。。<br />
+            　Java, JavaScript を用いたWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
+            初の本格Web案件でウキウキだったのですが、大炎上してしまいヒーヒー言いながら開発していました...。<br />
             そんな中、本案件のTOP3に入るほどの開発難易度と言われた在庫更新プログラムの開発を担当しました。(誇)
           </div>
         </AccordionDetails>
@@ -154,12 +155,12 @@ function Shokureki() {
         <AccordionDetails>
           <div className={styles.comments}>
             <div className={styles.shokurekiTitle}>
-              <span className={styles.spotlight_light}>①既存顧客の基幹システムのマイグレーションプロジェクト No2</span><br />
+              <span className={styles.spotlight_light}>①基幹システムのマイグレーションプロジェクト No2</span><br />
             </div>
-            　前年とは異なるお客様の基幹システムのマイグレーション作業を行いました。<br />
-            前年の経験と、炎上案件の経験もありますが、バッチ処理を用いた単純作業の自動化を行ったため、もの凄いスピードで作業が進み、
-            想定していたスケジュールを大幅に短縮させることができました。<br />
-            その成果が評価され、毎期末に選ばれる優秀エンジニア賞を受賞しました。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
+            　基幹システムのマイグレーション案件の第二段です。<br />
+            前年の経験と炎上案件の教訓から作業効率化の重要性を学んだため、単純作業や定例作業を積極的に自動化しました。<br />
+            そのような影の努力もあり、全体のスケジュールを大幅に短縮することができました。<br />
+            その成果が評価され、毎期末に選ばれる優秀エンジニア賞を受賞することができました。<span className={styles.small}>（そんな大した賞ではありません...）</span><br />
           </div>
         </AccordionDetails>
       </Accordion>
@@ -172,11 +173,11 @@ function Shokureki() {
             <div className={styles.shokurekiTitle}>
               <span className={styles.spotlight_light}>①Web基幹システムの開発プロジェクト No2</span><br />
             </div>
-            　Web案件ですが、少し変わった言語を使用したWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
-            こちらはとにかくタイトなスケジュールが組まれており、周りからは炎上案件認定されていました。。<br />
-            初めての言語であったため、初めは開発スピードが遅かったのですが、マニュアルや既存コードを読み漁り、怒涛の追い上げをみせ、
-            無事納期までに全画面(自分が担当したのは20本ほど)を開発することができました。<br />
-            そのおかげで、二度目の優秀エンジニア賞を受賞することができました 笑。<span className={styles.small}>（何度も言いますが、そんな大した賞ではありません...）</span><br />
+            　ニッチな言語を用いたWeb基幹システムの開発案件にプログラマーとして参画しました。<br />
+            本案件はとにかくタイトなスケジュールが組まれており、少しでも遅延が発生すると即炎上のような状況でした...。<br />
+            私自身初めて扱う言語であったため、開発マニュアルや既存コードを読み漁って開発のノウハウを叩き込み、<br />
+            なんとか遅延なく納期までに全画面(自分が担当したのは20本ほど)を開発することができました。<span className={styles.small}>（本当にきつかった...）</span><br />
+            ちなみに、二度目の優秀エンジニア賞を受賞することができました 笑。<span className={styles.small}>（何度も言いますが、そんな大した賞ではありません...）</span><br />
           </div>
         </AccordionDetails>
       </Accordion>
@@ -184,7 +185,7 @@ function Shokureki() {
         <div className={styles.comments}>
           <br />
           ※注意<br />
-          職歴は、長期プロジェクトのみ記載しております。<br />
+          職歴は長期プロジェクトのみ記載しております。<br />
           比較的規模の小さな案件に関しては記述しておりません。<br />
           また、会社が特定されそうな記述に関しては、抽象的な表現をとらせていただいております。<br />
         </div>
@@ -295,9 +296,9 @@ function ZikoPR() {
                     メッセージ
                   </div>
                   <div className={`${styles.pr_body} ${styles.nocenter}`}>
-                    コードを書くのが好きな方なので、趣味で掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
+                    プライベートでは趣味で掲示板やテトリスを作ったり、業務で困っている同期を助けるアプリやバッチプログラムを作ったりしています。（お代は昼飯）<br />
                     正直なところ、Webサイトの構築等はほとんどが独学ですので、Web業界で即戦力になれるかは不安なところはあります。<br />
-                    しかし、この先Webエンジニアとして生きていくため、貪欲で知識を吸収して1日でも早く即戦力になります🔥
+                    しかし、この先Webエンジニアとして生きていくため、貪欲に知識を吸収して1日でも早く即戦力になります🔥
                   </div>
                 </div>
               </Paper>
