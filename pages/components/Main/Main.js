@@ -44,7 +44,7 @@ function Main () {
   const [modeProfile, setModeProfile] = useState(false)
   const [modeBlog, setModeBlog] = useState(false)
   const [modeInformation, setModeInformation] = useState(false)
-  const [modeHelp, setModeHelp] = useState(false)
+  const [modeHelp, setModeHelp] = useState(true)
   const [cmdHistory, setCmdHistory] = useState([])
   const [hooksMap, setHooksMap] = useState([])
 
